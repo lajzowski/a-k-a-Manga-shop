@@ -24,10 +24,10 @@ export class FandomService {
   }
 
   async findOne(id: number): Promise<Fandom | null> {
-    return this.fandomRepository.findOne({ where: { id } });
+    return this.fandomRepository.findOneBy({ id });
   }
 
   async updateImageUrl(id: number, imageUrl: string): Promise<void> {
     await this.fandomRepository.update(id, { image_url: imageUrl });
   }
-} 
+}

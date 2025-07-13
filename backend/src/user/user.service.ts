@@ -11,17 +11,17 @@ export class UserService {
   ) {}
 
   async findByUsername(username: string): Promise<User | undefined> {
-    const user = await this.userRepository.findOne({ where: { username } });
+    const user = await this.userRepository.findOneBy({ username });
     return user ?? undefined;
   }
 
   async findById(id: number): Promise<User | undefined> {
-    const user = await this.userRepository.findOne({ where: { id } });
+    const user = await this.userRepository.findOneBy({ id });
     return user ?? undefined;
   }
 
   async findByRole(role: string): Promise<User[]> {
-    return this.userRepository.find({ where: { role } });
+    return this.userRepository.findBy({ role });
   }
 
   async createAuthor(username: string, password: string, contract_id: string): Promise<User> {
@@ -33,4 +33,4 @@ export class UserService {
     const authors = await this.userRepository.find({ where: { role: 'author' } });
     return authors.map(a => a.contract_id).filter(Boolean);
   }
-} 
+}
