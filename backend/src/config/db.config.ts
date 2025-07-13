@@ -9,5 +9,5 @@ export const typeOrmConfig: DataSourceOptions = {
     database: 'shop_prod',
     entities: ['src/**/*.entity.ts'],
     migrations: ['src/migrations/*.ts'],
-    synchronize: false,
+    synchronize: true,
 };
